@@ -1,0 +1,301 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0b0f19;
+    color: #f0f4f8;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+#startOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #18223c 0%, #030712 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 1s ease;
+    cursor: default;
+}
+
+.title-glow {
+    font-family: 'Caveat', cursive;
+    font-size: 4.5rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 20px rgba(255, 235, 59, 0.6);
+    margin-bottom: 5px;
+}
+
+.sub-quote {
+    font-family: 'Caveat', cursive;
+    color: #9ca3af;
+    margin-bottom: 35px;
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+#startBtn {
+    background: transparent;
+    border: 2px solid #ffeb3b;
+    color: #ffeb3b;
+    padding: 14px 35px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.2);
+    animation: buttonPulse 2s infinite ease-in-out;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 235, 59, 0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 235, 59, 0.5); }
+}
+
+#startBtn:hover {
+    background: #ffeb3b;
+    color: #030712;
+    box-shadow: 0 0 30px #ffeb3b;
+    transform: scale(1.08);
+}
+
+.cursor-sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1rem;
+    z-index: 999;
+    animation: sparkleFade 0.6s linear forwards;
+}
+
+@keyframes sparkleFade {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -80px) scale(0.3); opacity: 0; }
+}
+
+.hidden-element { display: none !important; }
+
+/* JAR CANVAS & INTERFACE */
+#jarCanvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #131b2e 0%, #050811 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 1.5s ease;
+}
+
+#jarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    transition: transform 0.3s ease;
+}
+
+.jar-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: #ffeb3b;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.4);
+}
+
+.jar-glass {
+    position: relative;
+    width: 220px;
+    height: 320px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-top: none;
+    border-radius: 10px 10px 50px 50px;
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.08), 0 10px 30px rgba(0,0,0,0.6);
+    pointer-events: none;
+}
+
+.jar-lid {
+    position: absolute;
+    top: -15px;
+    left: -12px;
+    width: 238px;
+    height: 20px;
+    background: rgba(255, 235, 59, 0.2);
+    border: 2px solid rgba(255, 235, 59, 0.5);
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.jar-prompt {
+    font-size: 0.85rem;
+    color: #ffeb3b;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+#starsInsideJar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.mini-jar-star {
+    position: absolute;
+    font-size: 1.5rem;
+    cursor: pointer;
+    pointer-events: auto !important;
+    filter: drop-shadow(0 0 8px currentColor);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 99;
+}
+
+.mini-jar-star:hover {
+    transform: scale(1.5);
+}
+
+.small-pixel-star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px white;
+    animation: ch4Glow 3s infinite ease-in-out;
+}
+@keyframes ch4Glow {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px #ffeb3b; }
+}
+
+.firework-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.3rem;
+    z-index: 100;
+    animation: explode 0.8s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+@keyframes explode {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.4); opacity: 0; }
+}
+
+#uiLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+#memoryDisplay {
+    max-width: 650px;
+    width: 85%;
+    text-align: center;
+    padding: 35px;
+    background: rgba(11, 15, 25, 0.92);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 235, 59, 0.3);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    cursor: pointer;
+}
+#memoryDisplay.show-element { 
+    opacity: 1; 
+    transform: translateY(0); 
+    pointer-events: auto;
+}
+
+.memory-timeline-date {
+    font-size: 0.95rem;
+    color: #ffeb3b;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.caption-text {
+    font-family: 'Caveat', cursive;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    color: #fffdf0;
+}
+
+/* CHAPTER 5 END SCREEN */
+#chapter5EndScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 7, 12, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+    padding: 20px;
+}
+#chapter5EndScreen.show-element { opacity: 1; }
+
+#chapter5EndScreen h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 3.5rem;
+    color: #ffeb3b;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255,235,59,0.4);
+}
+
+#chapter5EndScreen p {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    font-family: 'Caveat', cursive;
+    margin-bottom: 30px;
+}
+
+#goToChapter6Btn {
+    background: transparent;
+    border: 2px solid #ffeb3b;
+    color: #ffeb3b;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+#goToChapter6Btn:hover {
+    background: #ffeb3b;
+    color: #030712;
+    box-shadow: 0 0 20px #ffeb3b;
+}

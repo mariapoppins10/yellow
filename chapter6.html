@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6 - Our Universe Celebrates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chapter6.css">
+</head>
+<body>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="birthday-audio" src="music/birthday.mp3" preload="auto" loop></audio>
+
+    <!-- SPARKLY STARS, SHOOTING STARS & FIREWORKS BACKGROUND -->
+    <div id="ambientStars"></div>
+    <canvas id="shootingStarsCanvas"></canvas>
+    <canvas id="fireworksCanvas"></canvas>
+
+    <!-- STEP 1: YELLOW-THEMED INTERACTIVE GAME OVERLAY -->
+    <div id="questionOverlay" class="screen-step">
+        <h1 class="title-glow">Are you happy today, Allen? </h1>
+        <div class="btn-group">
+            <button id="yesBtn" class="glow-btn yellow-yes">Always! ✨</button>
+            <button id="noBtn" class="glow-btn yellow-no">Not really 🌧️</button>
+        </div>
+    </div>
+
+    <!-- STEP 2: CELEBRATION CONTAINER (TRUE CENTERED CAKE) -->
+    <div id="celebrationContainer" class="screen-step hidden-element">
+        <div class="text-content">
+            <h1 class="title-glow" id="typingTitle"></h1>
+            <p class="sub-quote" id="typingSubtitle"></p>
+        </div>
+
+        <div class="cake-container">
+            <div class="cake">
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+                <!-- Yellow Layers with Star Accents -->
+                <div class="layer layer-top">
+                    <span class="cake-star">⭐</span>
+                </div>
+                <div class="layer layer-middle">
+                    <span class="cake-star">⭐</span><span class="cake-star">⭐</span>
+                </div>
+                <div class="layer layer-bottom">
+                    <span class="cake-star">⭐</span><span class="cake-star">⭐</span><span class="cake-star">⭐</span>
+                </div>
+                <div class="plate"></div>
+            </div>
+        </div>
+
+        <button id="blowCandleBtn" class="glow-btn">Blow the Candle 🎂</button>
+    </div>
+
+    <!-- STEP 3: SENTENCE-BY-SENTENCE TYPING LETTER OVERLAY (ONE SENTENCE PER LINE) -->
+    <div id="finalMessageContainer" class="screen-step hidden-element">
+        <div class="letter-box">
+            <p id="wishSentence" class="wish-written-title"></p>
+            <p id="line1" class="cursive-final-msg"></p>
+            <p id="line2" class="cursive-final-msg"></p>
+            <p id="line3" class="cursive-final-msg"></p>
+            <button id="outroBtn" class="glow-btn hidden-element" style="margin-top: 25px;">To many more many kabaduyan with you... bleh</button>
+        </div>
+    </div>
+
+    <!-- STEP 4: FINAL OUTRO CLOSING SCREEN WITH FIREWORKS -->
+    <div id="outroContainer" class="screen-step hidden-element">
+        <div class="outro-content">
+            <h1 class="title-glow" style="font-size: 4rem;">Happy Birthday, my Allen :>></h1>
+            <p class="sub-quote" style="font-size: 2rem; margin-top: 10px;">Ang tugon, thanks Gemini & ChatGPT! hahaha</p>
+            
+        </div>
+    </div>
+
+    <script src="chapter6.js"></script>
+</body>
+</html>

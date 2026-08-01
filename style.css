@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Parisienne&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#0b0b0b;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+}
+
+/* ---------------- STARS ---------------- */
+
+.stars{
+
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+
+}
+
+.star{
+
+    position:absolute;
+    color:#FFD54A;
+
+    opacity:0;
+
+    animation:twinkle linear infinite;
+
+}
+
+@keyframes twinkle{
+
+    0%{
+        opacity:0;
+        transform:scale(.5);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.4);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(.5);
+    }
+
+}
+
+/* ---------------- CONTENT ---------------- */
+
+.container{
+
+    position:relative;
+    z-index:5;
+
+    text-align:center;
+
+    animation:fadeUp 2s;
+
+}
+
+h1{
+
+    font-family:'Bookman Old Style',serif;
+
+    font-size:65px;
+
+    color:#FFD54A;
+
+    margin-bottom:25px;
+
+}
+
+.message{
+
+    font-family:'Parisienne',cursive;
+
+    color:white;
+
+    font-size:40px;
+
+    line-height:1.6;
+
+    margin-bottom:45px;
+
+}
+
+button{
+
+    background:#FFD54A;
+
+    border:none;
+
+    padding:16px 40px;
+
+    border-radius:50px;
+
+    font-size:22px;
+
+    font-family:'Bookman Old Style',serif;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 25px #FFD54A;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

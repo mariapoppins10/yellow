@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #1b1b3a 0%, #0b0b16 100%);
+    font-family: 'Caveat', cursive;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* SPARKLY STARS BACKGROUND */
+#ambientStars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    background-color: #fffae6;
+    border-radius: 50%;
+    animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px #ffeb3b; }
+}
+
+#shootingStarsCanvas, #fireworksCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+#fireworksCanvas {
+    z-index: 22;
+}
+
+/* SCREENS & CONTAINERS */
+.screen-step {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    transition: opacity 0.5s ease;
+}
+
+.hidden-element {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: all 0.5s ease;
+}
+
+.show-element {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* YELLOW-THEMED INTERACTIVE GAME STYLES */
+#questionOverlay h1 {
+    font-size: 3.5rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 20px rgba(255, 235, 59, 0.6);
+    margin-bottom: 35px;
+    padding: 0 15px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* GLOW BUTTONS */
+.glow-btn {
+    background: transparent;
+    border: 2px solid #ffeb3b;
+    color: #ffeb3b;
+    padding: 10px 30px;
+    font-size: 1.6rem;
+    font-family: 'Caveat', cursive;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.2);
+    z-index: 30;
+}
+
+.glow-btn:hover {
+    background: #ffeb3b;
+    color: #0b0b16;
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.6);
+}
+
+.yellow-yes {
+    background: rgba(255, 235, 59, 0.15);
+}
+
+/* CELEBRATION CONTAINER - TRUE CENTER */
+#celebrationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-content {
+    margin-bottom: 20px;
+}
+
+.title-glow {
+    font-size: 3.2rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 15px rgba(255, 235, 59, 0.6);
+    min-height: 55px;
+}
+
+.sub-quote {
+    font-size: 1.6rem;
+    color: #e0e0e0;
+    font-weight: 400;
+    min-height: 35px;
+}
+
+/* CAKE CONTAINER - CENTERED */
+.cake-container {
+    margin: 15px 0 25px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.cake {
+    position: relative;
+    width: 220px;
+    height: 160px;
+}
+
+.plate {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 14px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.layer-bottom {
+    bottom: 14px;
+    width: 200px;
+    height: 45px;
+    background: linear-gradient(90deg, #fbc02d, #f57f17);
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,0.15);
+}
+
+.layer-middle {
+    bottom: 58px;
+    width: 160px;
+    height: 40px;
+    background: linear-gradient(90deg, #fbc531, #e1b12c);
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,0.15);
+}
+
+.layer-top {
+    bottom: 97px;
+    width: 120px;
+    height: 35px;
+    background: linear-gradient(90deg, #ffeaa7, #fbc531);
+    box-shadow: inset 0 -5px 0 rgba(0,0,0,0.15);
+}
+
+.cake-star {
+    font-size: 12px;
+    color: #fff;
+    text-shadow: 0 0 5px #ffeb3b;
+}
+
+/* MOVING CANDLE & FLAME */
+.candle {
+    position: absolute;
+    bottom: 131px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 32px;
+    background: repeating-linear-gradient(45deg, #fff, #fff 4px, #fbc531 4px, #fbc531 8px);
+    border-radius: 4px;
+    z-index: 3;
+}
+
+.flame {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 20px;
+    background: #ff9800;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #ff9800, 0 0 25px #ffeb3b;
+    animation: flicker 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1) rotate(-3deg); opacity: 0.9; }
+    100% { transform: translateX(-50%) scale(1.15) rotate(3deg); opacity: 1; filter: brightness(1.2); }
+}
+
+.candle.blown .flame {
+    display: none;
+}
+
+#blowCandleBtn {
+    margin-top: 10px;
+}
+
+/* FINAL MESSAGE CONTAINER */
+#finalMessageContainer {
+    z-index: 20;
+    background: transparent;
+}
+
+.letter-box {
+    max-width: 850px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.wish-written-title {
+    font-size: 3rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+    min-height: 50px;
+}
+
+.cursive-final-msg {
+    font-size: 2.3rem;
+    color: #fff;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: 0 0 15px rgba(255, 235, 59, 0.6);
+    line-height: 1.5;
+    min-height: 120px;
+}
+
+/* OUTRO CLOSING SCREEN */
+#outroContainer {
+    z-index: 25;
+    background: transparent;
+}
+
+.outro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInOutro 1.5s ease forwards;
+}
+
+.heart-symbol {
+    font-size: 3.5rem;
+    margin-top: 20px;
+    animation: pulseHeart 1.5s infinite ease-in-out;
+}
+
+@keyframes fadeInOutro {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseHeart {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #ffeb3b); }
+    50% { transform: scale(1.2); filter: drop-shadow(0 0 25px #ffeb3b); }
+}

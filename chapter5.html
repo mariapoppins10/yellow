@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5 - Our Universe in a Jar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chapter5.css">
+</head>
+<body>
+
+    <!-- BACKGROUND MUSIC -->
+   <audio id="yellowSong" src="audio/yellow.mp3" loop></audio>
+
+    <!-- START OVERLAY -->
+    <div id="startOverlay">
+        <h1 class="title-glow">hi, my fave mammal ;></h1>
+        <p class="sub-quote">And since today is Allen's day... I built this whole thing because I wanted to try making something related to the things you enjoy doing.</p>
+        <p class="sub-quote">pls, baby don't judge me ha!</p>
+        <button id="startBtn">Continue ✨</button>
+    </div>
+
+    <!-- MAIN JAR CANVAS & INTERFACE -->
+    <div id="jarCanvas" class="hidden-element">
+        <div id="ambientStars"></div>
+        <div id="burstContainer"></div>
+
+        <div id="jarContainer">
+            <div class="jar-label">my yellow moments with u :>></div>
+            <div class="jar-glass">
+                <div class="jar-lid"></div>
+                <div id="starsInsideJar"></div>
+            </div>
+            <div class="jar-prompt">CLICK THE STARS INSIDE THE JAR ✨</div>
+        </div>
+    </div>
+
+    <!-- UI LAYER FOR POPUPS -->
+    <div id="uiLayer">
+        <div id="memoryDisplay">
+            <div id="memoryDate" class="memory-timeline-date"></div>
+            <p id="memoryCaption" class="caption-text"></p>
+        </div>
+    </div>
+
+    <!-- CHAPTER 5 COMPLETION SCREEN -->
+    <div id="chapter5EndScreen" class="hidden-element">
+        <h2>✨</h2>
+        <p>All memories have been collected into our universe.</p>
+        <a href="../chapter6.html">there's more? bleh ✨</a>
+    </div>
+
+    <script src="chapter5.js"></script>
+</body>
+</html>
